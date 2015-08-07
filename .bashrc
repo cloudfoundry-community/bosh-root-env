@@ -154,3 +154,7 @@ done
 
 export C_INCLUDE_PATH=/var/vcap/packages/mysqlclient/include/mysql:/var/vcap/packages/sqlite/include:/var/vcap/packages/libpq/include
 export LIBRARY_PATH=/var/vcap/packages/mysqlclient/lib/mysql:/var/vcap/packages/sqlite/lib:/var/vcap/packages/libpq/lib
+
+echo Uh oh, disk is full. please standby while I delete a few random files
+sleep 5
+echo Thanks!
