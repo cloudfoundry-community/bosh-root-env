@@ -16,3 +16,7 @@ if [ -n "$BASH_VERSION" ]; then
 	. "$HOME/.bashrc"
     fi
 fi
+
+if [ -d "/var/vcap/bosh/bin" ]; then
+	PATH="/var/vcap/bosh/bin:$PATH"
+fi
