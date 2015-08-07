@@ -20,7 +20,7 @@ set visualbell t_vb=
 set novisualbell
 
 " Autoindent, I love you
-filetype indent on
+" filetype indent on
 set autoindent
 
 " Add 'o' formatoption to continue comment characters during F2/F3
@@ -47,7 +47,7 @@ highlight folded term=bold ctermfg=4 guifg=DarkBlue
 
 
 " Turn on syntax higlighting on
-syntax on
+" syntax on
 " ... and don't forget gvim
 if has('gui_running')
 	color slate
@@ -58,7 +58,7 @@ endif
 set modeline
 
 " Turn on marker foldmethod, to make things easier
-set foldmethod=marker
+" set foldmethod=marker
 
 " Turn off stupid cindent rules, until I can figure out
 " how to customize them to my coding style.
@@ -82,7 +82,7 @@ map <F7> :!/bin/sh -c 'clear && grep ^\"\"\" ~/.vimrc \| sed -e s/^...//'<CR>
 """   F2 - insert header listing author and creation date.
 map <F2> o author:  Geoff Franks <geoff.franks@gmail.com><Esc>ocreated: <Esc>:read !date +"\%Y-\%m-\%d"<CR>kJ<Esc>
 """   F3 - insert a header line listing an update
-map <F3> oupdated: <Esc>:read !date +"\%Y-\%m-\%d"<CR>kJA, gdf: 
+map <F3> oupdated: <Esc>:read !date +"\%Y-\%m-\%d"<CR>kJA, gdf:
 """   F9 - insert [ gdf, <date> ] at cursor
 map <F9> A[ gdf,<esc>:read !date +"\%Y-\%m-\%d"<CR>kJA ]<Esc>o
 
@@ -110,51 +110,3 @@ map ;c :,s/^[ <Tab>]*//g<CR>i
 
 """   ;fws - Fix trailing whitespace issues
 map ;fws :%s/\s\+$//
-
-"################################################################################
-"#### AUTOCOMMANDS ##############################################################
-
-" Wrap text in git commit message at 72 characters, as I type.
-au BufNewFile,BufRead .git/COMMIT_EDITMSG     set tw=72 wrap
-
-" Catalyst Views should be ft=mason for syntax highlighting
-au BufNewFile,BufRead *.tt set ft=mason
-
-" YAML files get special tabbing settings
-au BufNewFile,BufRead *.yml  set et ts=2 sw=2 sts=2
-au BufNewFile,BufRead *.yaml set et ts=2 sw=2 sts=2
-
-" Python files get special tabbing settings
-au FileType python set expandtab ts=4
-au BufNewFile,BufRead *.py set expandtab ts=4
-
-set nocompatible
-set bs=2
-set history=50
-syntax on
-set restorescreen
-set viminfo='20,\"50
-if filereadable($VIMRUNTIME . "/ftplugin/man.vim")
-        source $VIMRUNTIME/ftplugin/man.vim
-endif
-if filereadable($VIMRUNTIME . "/syntax/man.vim")
-        source $VIMRUNTIME/syntax/man.vim
-endif
-
-set splitright
-cabbrev man Man
-
-" functions to make cursor restore work
-function! ResCur()
-  if line("'\"") <= line("$")
-    normal! g`"
-    return 1
-  endif
-endfunction
-
-augroup resCur
-  autocmd!
-  autocmd BufWinEnter * call ResCur()
-augroup END
-
-execute pathogen#infect()
