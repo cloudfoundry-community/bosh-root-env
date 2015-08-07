@@ -1,0 +1,7 @@
+#### THIS FILE IS PUPPETIZED. EDIT AT YOUR OWN PERIL
+
+# enable history searching with arrows
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+# also keep default inputrc stuff
+$include /etc/inputrc
